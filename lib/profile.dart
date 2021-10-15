@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Search extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  _SearchState createState() => _SearchState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _SearchState extends State<Search> {
-  String? profileName;
-
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,47 +14,10 @@ class _SearchState extends State<Search> {
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network('https://avatars.githubusercontent.com/u/54365855?v=4', width: 150, height: 150),
-                SizedBox(height: 15.0),
-                Text(
-                  'Encontre um Dev',
-                  style: GoogleFonts.poppins(
-                    textStyle:
-                    TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(height: 5.0),
-                Text(
-                  'Digite o nome do perfil do desenvolvedor no Github.',
-                  style: GoogleFonts.lato(
-                    textStyle:
-                    TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.alternate_email, color: Colors.pink),
-                      hintText: 'Ex: octocat',
-                      fillColor: Colors.pink,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.pink, width: 2.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    style: TextStyle(
-                      fontSize: 18.0,
-                    ),
-                    onChanged: (value) {
-                      profileName = value;
-                    },
-                  ),
-                ),
                 TextButton(
                   onPressed: () async {
                     // Pokemon pokemon = await PokemonService.fetchPokemon(
@@ -72,13 +33,170 @@ class _SearchState extends State<Search> {
                     shape: StadiumBorder(),
                   ),
                   child: Text(
-                    'Procurar perfil',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.pink
-                    ),
+                    'Voltar a busca',
+                    style: TextStyle(fontSize: 20.0, color: Colors.pink),
                   ),
-                )
+                ),
+                SizedBox(height: 10.0),
+                CircleAvatar(
+                    radius: 80,
+                    backgroundImage: NetworkImage(
+                        'https://avatars.githubusercontent.com/u/54365855?v=4')),
+                SizedBox(height: 15.0),
+                Text(
+                  'Gabriela Liz Moreira',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    textStyle:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 5.0),
+                Text(
+                  'Junior Developer | Software Engineering student',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                    textStyle:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.location_pin, color: Colors.pink),
+                    Text(
+                      'Joinville - SC, Brasil',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                        textStyle:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(width: 10.0),
+                    Icon(Icons.apartment_sharp, color: Colors.pink),
+                    Text(
+                      'By Seven IT',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                        textStyle:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15.0),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 140.0,
+                      child: Card(
+                        child: Container(
+                          padding: EdgeInsets.all(20.0),
+                          child: Column(
+                            children: <Widget>[
+                              Icon(Icons.wb_cloudy_rounded),
+                              Text(
+                                '13',
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                'Repositórios',
+                                style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100.0,
+                      child: Card(
+                        child: Container(
+                          padding: EdgeInsets.all(20.0),
+                          child: Column(
+                            children: <Widget>[
+                              Icon(Icons.star),
+                              Text(
+                                '8',
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                'Estrelas',
+                                style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 120.0,
+                      child: Card(
+                        child: Container(
+                          padding: EdgeInsets.all(20.0),
+                          child: Column(
+                            children: <Widget>[
+                              Icon(Icons.supervisor_account),
+                              Text(
+                                '21',
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                'Seguidores',
+                                style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15.0),
+                TextButton(
+                  onPressed: () async {
+                    // Pokemon pokemon = await PokemonService.fetchPokemon(
+                    //     pokemonName!.toLowerCase());
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) {
+                    //     return ResultScreen(pokemon: pokemon);
+                    //   }),
+                    // );
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: StadiumBorder(),
+                  ),
+                  child: Text(
+                    'Ir para o perfil',
+                    style: TextStyle(fontSize: 20.0, color: Colors.pink),
+                  ),
+                ),
               ],
             ),
           ),
