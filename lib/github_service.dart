@@ -1,13 +1,13 @@
 import 'package:github_profiles/networking.dart';
-import 'package:github_profiles/users.dart';
+import 'package:github_profiles/user.dart';
 
-const usersUrl = 'https://api.github.com/users/';
+const usersUrl = 'https://api.github.com/users';
 
 class GithubService {
-  static Future<Users> fetchUsers(String username) async {
-    final String url = '$usersUrl/$username';
+  static Future<User> fetchUsers(String profileName) async {
+    final String url = '$usersUrl/$profileName';
     final response = await NetworkHelper.getData(url);
 
-    return Users.fromJson(response);
+    return User.fromJson(response);
   }
 }

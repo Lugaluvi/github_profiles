@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:github_profiles/github_service.dart';
+import 'package:github_profiles/profile.dart';
+import 'package:github_profiles/user.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Search extends StatefulWidget {
@@ -59,14 +62,14 @@ class _SearchState extends State<Search> {
                 ),
                 TextButton(
                   onPressed: () async {
-                    // Pokemon pokemon = await PokemonService.fetchPokemon(
-                    //     pokemonName!.toLowerCase());
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) {
-                    //     return ResultScreen(pokemon: pokemon);
-                    //   }),
-                    // );
+                    User user = await GithubService.fetchUsers(
+                        profileName!.toLowerCase());
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return Profile(user: user);
+                      }),
+                    );
                   },
                   style: OutlinedButton.styleFrom(
                     shape: StadiumBorder(),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:github_profiles/search.dart';
+import 'package:github_profiles/user.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Profile extends StatefulWidget {
-  @override
-  _ProfileState createState() => _ProfileState();
-}
+class Profile extends StatelessWidget {
+  const Profile({required this.user});
 
-class _ProfileState extends State<Profile> {
+  final User user;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +21,12 @@ class _ProfileState extends State<Profile> {
               children: [
                 TextButton(
                   onPressed: () async {
-                    // Pokemon pokemon = await PokemonService.fetchPokemon(
-                    //     pokemonName!.toLowerCase());
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) {
-                    //     return ResultScreen(pokemon: pokemon);
-                    //   }),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return Search();
+                      }),
+                    );
                   },
                   style: OutlinedButton.styleFrom(
                     shape: StadiumBorder(),
@@ -41,10 +40,10 @@ class _ProfileState extends State<Profile> {
                 CircleAvatar(
                     radius: 80,
                     backgroundImage: NetworkImage(
-                        'https://avatars.githubusercontent.com/u/54365855?v=4')),
+                        '${user.avatar_url.toString()}')),
                 SizedBox(height: 15.0),
                 Text(
-                  'Gabriela Liz Moreira',
+                  user.name.toString(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     textStyle:
@@ -53,7 +52,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 SizedBox(height: 5.0),
                 Text(
-                  'Junior Developer | Software Engineering student',
+                  user.bio.toString(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                     textStyle:
@@ -66,7 +65,7 @@ class _ProfileState extends State<Profile> {
                   children: [
                     Icon(Icons.location_pin, color: Colors.pink),
                     Text(
-                      'Joinville - SC, Brasil',
+                      user.location.toString(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         textStyle:
@@ -76,7 +75,7 @@ class _ProfileState extends State<Profile> {
                     SizedBox(width: 10.0),
                     Icon(Icons.apartment_sharp, color: Colors.pink),
                     Text(
-                      'By Seven IT',
+                      user.company.toString(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         textStyle:
@@ -97,7 +96,7 @@ class _ProfileState extends State<Profile> {
                             children: <Widget>[
                               Icon(Icons.wb_cloudy_rounded),
                               Text(
-                                '13',
+                                user.public_repos.toString(),
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
                                       fontSize: 25.0,
@@ -126,7 +125,7 @@ class _ProfileState extends State<Profile> {
                             children: <Widget>[
                               Icon(Icons.star),
                               Text(
-                                '8',
+                                user.followers.toString(),
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
                                       fontSize: 25.0,
@@ -134,7 +133,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                               Text(
-                                'Estrelas',
+                                'Seguidores',
                                 style: GoogleFonts.lato(
                                   textStyle: TextStyle(
                                       fontSize: 14.0,
@@ -155,7 +154,7 @@ class _ProfileState extends State<Profile> {
                             children: <Widget>[
                               Icon(Icons.supervisor_account),
                               Text(
-                                '21',
+                                user.following.toString(),
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
                                       fontSize: 25.0,
@@ -163,7 +162,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                               Text(
-                                'Seguidores',
+                                'Seguindo',
                                 style: GoogleFonts.lato(
                                   textStyle: TextStyle(
                                       fontSize: 14.0,
