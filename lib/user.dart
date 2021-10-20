@@ -36,4 +36,4 @@ class User {
       public_repos: json["public_repos"],
       followers: json["followers"],
       following: json["following"]);
-}
+  }
