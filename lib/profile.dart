@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:github_profiles/search.dart';
 import 'package:github_profiles/user.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatelessWidget {
   const Profile({required this.user});
@@ -88,7 +89,7 @@ class Profile extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(
-                      width: 140.0,
+                      width: 130.0,
                       child: Card(
                         child: Container(
                           padding: EdgeInsets.all(20.0),
@@ -117,13 +118,13 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 100.0,
+                      width: 120.0,
                       child: Card(
                         child: Container(
                           padding: EdgeInsets.all(20.0),
                           child: Column(
                             children: <Widget>[
-                              Icon(Icons.star),
+                              Icon(Icons.visibility),
                               Text(
                                 user.followers.toString(),
                                 style: GoogleFonts.poppins(
@@ -146,7 +147,7 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 120.0,
+                      width: 110.0,
                       child: Card(
                         child: Container(
                           padding: EdgeInsets.all(20.0),
@@ -179,14 +180,15 @@ class Profile extends StatelessWidget {
                 SizedBox(height: 15.0),
                 TextButton(
                   onPressed: () async {
-                    // Pokemon pokemon = await PokemonService.fetchPokemon(
-                    //     pokemonName!.toLowerCase());
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) {
-                    //     return ResultScreen(pokemon: pokemon);
-                    //   }),
-                    // );
+                    final url = user.html_url.toString();
+
+                    if (await canLaunch(url)) {
+                      await launch(
+                        url,
+                        forceSafariVC: false,
+                        forceWebView: true,
+                      );
+                    }
                   },
                   style: OutlinedButton.styleFrom(
                     shape: StadiumBorder(),

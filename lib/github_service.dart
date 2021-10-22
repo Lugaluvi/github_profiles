@@ -8,6 +8,7 @@ class GithubService {
     final String url = '$usersUrl/$profileName';
     final response = await NetworkHelper.getData(url);
 
+    
     return User.fromJson(response);
   }
 }
