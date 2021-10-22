@@ -64,21 +64,12 @@ class _SearchState extends State<Search> {
                   onPressed: () async {
                     User user = await GithubService.fetchUsers(
                         profileName!.toLowerCase());
-                    if (user == "[]") {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content: Text("Este usuário não foi encontrado."),
-                            duration: const Duration(seconds: 1)
-                        ),
-                      );
-                    } else {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) {
                           return Profile(user: user);
                         }),
                       );
-                    }
                   },
                   style: OutlinedButton.styleFrom(
                     shape: StadiumBorder(),
