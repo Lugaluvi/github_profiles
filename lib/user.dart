@@ -26,13 +26,13 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) => User(
       id: json["id"],
-      html_url: "${json["html_url"]}",
-      login: "${json["login"]}",
-      avatar_url: "${json["avatar_url"]}",
-      name: "${json["name"]}",
-      company: "${json["company"]}",
-      location: "${json["location"]}",
-      bio: "${json["bio"]}",
+      html_url: json["html_url"] == null ? "" : json["html_url"],
+      login: json["login"] == null ? "" : json["login"],
+      avatar_url: json["avatar_url"] == null ? "" : json["avatar_url"],
+      name: json["name"] == null ? "" : json["name"],
+      company: json["company"] == null ? "" : json["company"],
+      location: json["location"] == null ? "" : json["location"],
+      bio: json["bio"] == null ? "" : json["bio"],
       public_repos: json["public_repos"],
       followers: json["followers"],
       following: json["following"]);

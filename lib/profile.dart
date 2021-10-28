@@ -53,7 +53,7 @@ class Profile extends StatelessWidget {
                 ),
                 SizedBox(height: 5.0),
                 Text(
-                  user.bio.toString(),
+                  user.bio == "" ? "Descrição não informada" : user.bio.toString(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                     textStyle:
@@ -66,7 +66,7 @@ class Profile extends StatelessWidget {
                   children: [
                     Icon(Icons.location_pin, color: Colors.pink),
                     Text(
-                      user.location.toString(),
+                      user.location == "" ? "Não informado" : user.location.toString(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         textStyle:
@@ -76,7 +76,7 @@ class Profile extends StatelessWidget {
                     SizedBox(width: 10.0),
                     Icon(Icons.apartment_sharp, color: Colors.pink),
                     Text(
-                      user.company.toString(),
+                      user.company == "" ? "Não informado" : user.company.toString(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         textStyle:
